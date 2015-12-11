@@ -3,9 +3,9 @@ set -e
 set -x
 
 
-PREFIX=$HOME/php
-#WGET=wget
-WGET=true
+PREFIX=$HOME/php-test
+WGET=wget
+#WGET=true
 
 export PATH=$PREFIX/bin:/opt/compiler/gcc-4.8.2/bin:$PATH
 export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig:$PREFIX/lib64/pkgconfig
@@ -24,10 +24,10 @@ ln -s -f sbin $PREFIX/bin
 
 # openssl
 cd $TOP
-$WGET -c -O openssl-1.0.2d.tar.gz http://openssl.org/source/openssl-1.0.2d.tar.gz
-rm -fr openssl-1.0.2d
-tar zxf openssl-1.0.2d.tar.gz
-cd openssl-1.0.2d
+$WGET -c -O openssl-1.0.2e.tar.gz http://openssl.org/source/openssl-1.0.2e.tar.gz
+rm -fr openssl-1.0.2e
+tar zxf openssl-1.0.2e.tar.gz
+cd openssl-1.0.2e
 ./Configure --prefix=$PREFIX --openssldir=$PREFIX/etc/ssl linux-x86_64 shared
 make -j
 make install
@@ -157,10 +157,11 @@ make install
 
 # php
 cd $TOP
-$WGET -c -O php-5.6.15.tar.gz http://cn2.php.net/get/php-5.6.15.tar.gz/from/this/mirror
-rm -fr php-5.6.15
-tar zxf php-5.6.15.tar.gz
-cd php-5.6.15
+#$WGET -c -O php-7.0.0.tar.gz http://php.net/distributions/php-7.0.0.tar.gz
+$WGET -c -O php-7.0.0.tar.gz http://cn2.php.net/distributions/php-7.0.0.tar.gz
+rm -fr php-7.0.0
+tar zxf php-7.0.0.tar.gz
+cd php-7.0.0
 ./configure --prefix=$PREFIX \
 --enable-shared \
 --enable-fpm \
