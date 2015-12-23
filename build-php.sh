@@ -5,7 +5,7 @@ set -x
 
 PREFIX=$HOME/php-test
 WGET=wget
-#WGET=true
+WGET=true
 
 export PATH=$PREFIX/bin:/opt/compiler/gcc-4.8.2/bin:$PATH
 export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig:$PREFIX/lib64/pkgconfig
